@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login|Welcome to Documation System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.0/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+</head>
+<body>
+<section class="hero is-primary is-fullheight">
+    <div class="hero-body">
+        <div class="container">
+            <div class="columns is-centered">
+                <div class="column is-5-tablet is-4-desktop is-3-widescreen">
+                    <form action="" method="post" class="box">
+                        {{ form.hidden_tag() }}
+                        <div class="field has-text-centered">
+                            <img src="{{ url_for('static', filename='automation-icon.png') }}">
+                        </div>
+                        <div class="field">
+                            <label class="label">{{ form.roll_no.label }}</label>
+                            <div class="control has-icons-left">
+                                {{ form.roll_no(class_='input', type=number, placeholder=123456) }}
+{#                                <input class="input" type="email" placeholder="johndoe@example.com"></input>#}
+                                <span class="icon is-small is-left">
+                                        <i class="fa fa-envelope"></i>
+                                    </span>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label">{{ form.password.label }}</label>
+                            <div class="control has-icons-left">
+                                {{ form.password(class_="input",type="password",placeholder="**********")}}
+                                <span class="icon is-small is-left">
+                                        <i class="fa fa-lock"></i>
+                                    </span>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="checkbox">
+                                {{form.remember_me()}}
+                                {{ form.remember_me.label }}
+                            </label>
+                        </div>
+                        <div class="field">
+                             {{ form.submit(class_="button is-success")}}
+                        </div>
+                        <div class="field has-text-centered">
+                           <p>New User? <a href="{{ url_for('register') }}">Click to Register!</a></p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> {% if current_user.is_authenticated %} Welcome to Documation System{% else %} Login to Documation System {% endif %} </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.0/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+</head>
+<body>
+<nav class="navbar has-shadow">
+    <div class="navbar-brand">
+        <a class="navbar-item">
+            <img src="{{ url_for('static', filename='automation-icon.png') }}">
+        </a>
+        <div class="navbar-burger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+    <div class="navbar-menu">
+        <div class="navbar-start">
+            <div class="navbar-item">
+                <small>Create Document at the speed of technology</small>
+            </div>
+        </div>
+        <div class="navbar-end">
+            {% if current_user.is_authenticated %}
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <div class="navbar-link">
+                        {{ current_user.employee_name }}
+                    </div>
+                    <div class="navbar-dropdown">
+                        <a class="navbar-item">
+                            <div>
+                            <span class="icon is-small">
+                                <i class="fa fa-user-circle"></i>
+                            </span>
+                                Profile
+                            </div>
+                        </a>
+                        <a class="navbar-item">
+                            <div>
+                            <span class="icon is-small">
+                                <i class="fa fa-bug"></i>
+                            </span>
+                                Report Bug
+                            </div>
+                        </a>
+                        <a class="navbar-item" href="{{ url_for('logout') }}">
+                            <div>
+                            <span class="icon is-small">
+                                <i class="fa fa-sign-out-alt"></i>
+                            </span>
+                                Sign Out
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            {% else %}
+                <div class="navbar-item">
+                    <div class="field is-grouped">
+                        <p class="control">
+                            <a class="button is-primary" href="{{ url_for('login') }}">
+                            <span class="icon">
+                                <i class="fas fa-sign-in-alt"></i>
+                            </span>
+                                <span>
+                                Sign In
+                            </span>
+                            </a>
+                        </p>
+                        <p class="control">
+                            <a class="button" href="{{ url_for('register') }}">
+                            <span class="icon">
+                                <i class="fa fa-user-plus" aria-hidden="true"></i>
+                            </span>
+                                <span>
+                                Register
+                            </span>
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</nav>
+</body>
+</html>

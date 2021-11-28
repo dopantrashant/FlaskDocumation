@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registeration for Documation System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.0/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+</head>
+<body>
+<section class="hero is-primary is-fullheight">
+    <div class="hero-body">
+        <div class="container">
+            <div class="columns is-centered">
+                <div class="column is-5-tablet is-4-desktop is-3-widescreen">
+                    <form action="" method="post" class="box">
+                        {{ form.hidden_tag() }}
+                        <div class="field has-text-centered">
+                            <img src="{{ url_for('static', filename='automation-icon.png') }}">
+                        </div>
+                        <div class="field">
+                            <label class="label">{{ form.employee_name.label }}</label>
+                            <div class="control has-icons-left">
+                                {{ form.employee_name(class_="input",placeholder="Prashant Singh") }}
+                                <span class="icon is-small is-left">
+                                        <i class="fa fa-user"></i>
+                                </span>
+                            </div>
+                            {% for error in form.employee_name.errors %}
+                                <span style="color: red;">[{{ error }}]</span>
+                            {% endfor %}
+                        </div>
+                        <div class="field">
+                            <label class="label">{{ form.roll_no.label }}</label>
+                            <div class="control has-icons-left">
+                                {{ form.roll_no(class_="input", type="number",placeholder="60245") }}
+                                <span class="icon is-small is-left">
+                                        <i class="fa fa-id-card"></i>
+                                    </span>
+                            </div>
+                            {% for error in form.roll_no.errors %}
+                                <span style="color: red;">[{{ error }}]</span>
+                            {% endfor %}
+                        </div>
+                        <div class="field">
+                            <label class="label">{{ form.branch_code.label }}</label>
+                            <div class="control has-icons-left">
+                                {{ form.branch_code(class_="input", type="number",placeholder="2316") }}
+                                <span class="icon is-small is-left">
+                                        <i class="fa fa-building"></i>
+                                    </span>
+                            </div>
+                            {% for error in form.branch_code.errors %}
+                                <span style="color: red;">[{{ error }}]</span>
+                            {% endfor %}
+                        </div>
+                        <div class="field">
+                            <label class="label">{{ form.email.label }}</label>
+                            <div class="control has-icons-left">
+                                {{ form.email(class_="input",placeholder="johndoe@example.com") }}
+                                <span class="icon is-small is-left">
+                                        <i class="fa fa-envelope"></i>
+                                    </span>
+                            </div>
+                            {% for error in form.email.errors %}
+                                <span style="color: red;">[{{ error }}]</span>
+                            {% endfor %}
+                        </div>
+                        <div class="field">
+                            <label class="label">{{ form.password.label }}</label>
+                            <div class="control has-icons-left">
+                                {{ form.password(class_="input",placeholder="**********") }}
+                                <span class="icon is-small is-left">
+                                        <i class="fa fa-lock"></i>
+                                    </span>
+                            </div>
+                            {% for error in form.password.errors %}
+                                <span style="color: red;">[{{ error }}]</span>
+                            {% endfor %}
+                        </div>
+                        <div class="field">
+                            <label class="label">{{ form.password2.label }}</label>
+                            <div class="control has-icons-left">
+                                {{ form.password2(class_="input",placeholder="**********") }}
+                                <span class="icon is-small is-left">
+                                        <i class="fa fa-lock"></i>
+                                    </span>
+                            </div>
+                            {% for error in form.password2.errors %}
+                                <span style="color: red;">[{{ error }}]</span>
+                            {% endfor %}
+                        </div>
+
+                        <div class="field">
+                            <div class="field">
+                                {{ form.submit(class_="button is-success") }}
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>
