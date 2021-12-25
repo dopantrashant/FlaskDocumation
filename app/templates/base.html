@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title> {% if current_user.is_authenticated %} Welcome to Documation System{% else %} Login to Documation System {% endif %} </title>
+    <title> {% if current_user.is_authenticated %} Welcome to Documation System{% else %} Login to Documation
+        System {% endif %} </title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.0/css/bulma.min.css">
     <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
 </head>
@@ -86,5 +87,79 @@
         </div>
     </div>
 </nav>
+{% if current_user.is_authenticated %}
+    <section class="section">
+        <div class="columns">
+            <div class="column is-4-tablet is-3-desktop is-2-widescreen">
+                <nav class="menu">
+                    <p class="menu-label">
+                        Menu
+                    </p>
+                    <ul class="menu-list">
+
+                        <li>
+                            <a href="dashboard.html">
+                            <span class="icon">
+                                <i class="fa fa-dashboard"></i>
+                            </span>
+                                Dashboard
+                            </a>
+                        </li>
+                        <li>
+                            <a class="is-active" href="books.html">
+                            <span class="icon">
+                            <i class="fa fa-book"></i>
+                            </span>
+                                Books
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ url_for('addcustomer') }}">
+                            <span class="icon">
+                            <i class="fa fa-address-book"></i>
+                            </span>
+                                Customers
+                            </a>
+                        </li>
+                        <li>
+                            <a href="orders.html">
+                            <span class="icon">
+                        <i class="fa fa-file-text-o"></i>
+                        </span>
+                                Orders
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                </nav>
+            </div>
+            <div class="column">
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                        {% for category,message in messages %}
+                            <div class="notification is-{{ category }}">
+                                <button class="delete"></button>
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+                {% block content %}
+                {% endblock %}
+            </div>
+        </div>
+    </section>
+{% endif %}
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        (document.querySelectorAll('.notification .delete') || []).forEach(($delete) => {
+            const $notification = $delete.parentNode;
+
+            $delete.addEventListener('click', () => {
+                $notification.parentNode.removeChild($notification);
+            });
+        });
+    });
+</script>
 </body>
 </html>

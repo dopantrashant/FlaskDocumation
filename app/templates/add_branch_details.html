@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <div class="container">
+        <div class="columns">
+            <div class="column is-three-quarters">
+                <form action="" method="post" class="box">
+                    {{ form.hidden_tag() }}
+                    <div class="field has-text-centered">
+                        Modify Branch Address
+                    </div>
+                    <div class="field">
+                        <label class="label">{{ form.branch_name.label }}</label>
+                        <div class="control">
+                            {{ form.branch_name(class_='input', type='text', placeholder='Branch Name') }}
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">{{ form.branch_address_line_1.label }}</label>
+                        <div class="control">
+                            {{ form.branch_address_line_1(class_='input', type='text', placeholder='Branch Address Line 1') }}
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">{{ form.branch_address_line_2.label }}</label>
+                        <div class="control">
+                            {{ form.branch_address_line_2(class_='input', type='text', placeholder='Branch Address Line 2') }}
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">{{ form.branch_address_line_3.label }}</label>
+                        <div class="control">
+                            {{ form.branch_address_line_3(class_='input', type='text', placeholder='Branch Address Line 3') }}
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">{{ form.branch_address_line_4.label }}</label>
+                        <div class="control">
+                            {{ form.branch_address_line_4(class_='input', type='text', placeholder='Branch Address Line 4') }}
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">{{ form.state.label }}</label>
+                        <div class="control">
+                            <div class="select">
+                                {{ form.state }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">{{ form.district.label }}</label>
+                        <div class="control">
+                            <div class="select district">
+                                {{ form.district }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">{{ form.pin.label }}</label>
+                        <div class="control">
+                            {{ form.pin(class_='input', type='text', placeholder='Pin Code of the Branch') }}
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">{{ form.email.label }}</label>
+                        <div class="control">
+                            {{ form.email(class_='input', type='text', placeholder='Email of the Branch') }}
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">{{ form.contact_no.label }}</label>
+                        <div class="control">
+                            {{ form.contact_no(class_='input', type='text', placeholder='Contact No of the Branch') }}
+                        </div>
+                    </div>
+                        <div class="control">
+                            {{ form.submit() }}
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

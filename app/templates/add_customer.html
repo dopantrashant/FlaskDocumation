@@ -1,0 +1,119 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <div class="container">
+        <div class="columns">
+            <div class="column is-three-quarters">
+                <form action="" method="post" class="box">
+                    {{ form.hidden_tag() }}
+                    <div class="field has-text-centered">
+                        Add Customer
+                    </div>
+                    <div class="field">
+                        <label class="label">{{ form.id.label }}</label>
+                        <div class="control">
+                            {{ form.id(class_='input', type='text', placeholder='Finacle Customer ID') }}
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">{{ form.uidai_no.label }}</label>
+                        <div class="control">
+                            {{ form.uidai_no(class_='input', type='text', placeholder='Aadhar Number of Customer') }}
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">{{ form.pan_no.label }}</label>
+                        <div class="control">
+                            {{ form.pan_no(class_='input', type='text', placeholder='PAN Of Customer') }}
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">{{ form.driving_licence.label }}</label>
+                        <div class="control">
+                            {{ form.driving_licence(class_='input', type='text', placeholder='Driving Licence of Customer') }}
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">{{ form.voter_id.label }}</label>
+                        <div class="control">
+                            {{ form.voter_id(class_='input', type='text', placeholder='Voter Id of Customer') }}
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">{{ form.salutation.label }}</label>
+                        <div class="control">
+                            <div class="select">
+                                {{ form.salutation }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">{{ form.first_name.label }}</label>
+                        <div class="control">
+                            {{ form.first_name(class_='input', type='text', placeholder='First Name') }}
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">{{ form.middle_name.label }}</label>
+                        <div class="control">
+                            {{ form.middle_name(class_='input', type='text', placeholder='Middle Name') }}
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">{{ form.last_name.label }}</label>
+                        <div class="control">
+                            {{ form.last_name(class_='input', type='text', placeholder='Last Name') }}
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">{{ form.short_name.label }}</label>
+                        <div class="control">
+                            {{ form.short_name(class_='input', type='text', placeholder='Short Name') }}
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">{{ form.dob.label }}</label>
+                        <div class="control">
+                            {{ form.dob }}
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">{{ form.gender.label }}</label>
+                        <div class="control">
+                            <div class="select">
+                                {{ form.gender }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">{{ form.marital_status.label }}</label>
+                        <div class="control">
+                            <div class="select">
+                                {{ form.marital_status }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">{{ form.father_husband_name.label }}</label>
+                        <div class="control">
+                            {{ form.father_husband_name(class_='input', type='text', placeholder='Father/Husband Name') }}
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">{{ form.mother_name.label }}</label>
+                        <div class="control">
+                            {{ form.mother_name(class_='input', type='text', placeholder='Mother Name') }}
+                        </div>
+                    </div>
+                    <div class="field">
+
+                        <div class="control">
+                            {{ form.submit() }}
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

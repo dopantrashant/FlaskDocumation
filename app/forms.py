@@ -4,10 +4,10 @@ from wtforms.fields.html5 import EmailField, DateField
 from wtforms.validators import ValidationError, DataRequired, Email, EqualTo
 from app.models import User
 
-SALUTATION_LIST = [('Mr.', 'Mr.'), ('Mrs.', 'Mrs.'), ('Ms.', 'Ms.'), ('Dr.', 'Dr.')]
-MOBILE_TYPE = [('Mobile', 'Mobile'), ('Landline', 'Landline'), ('Office', 'Office')]
-EMAIL_ID_TYPE = [('Personal', 'Personal'), ('Official', 'Official'), ('Communication', 'Communication')]
-ADDRESS_TYPE = [('Residential', 'Residential'), ('Permanent', 'Permanent'), ('Communication', 'Communication'), ('Office', 'Office')]
+SALUTATION_LIST = [(0, 'Select Salutation'), ('Mr.', 'Mr.'), ('Mrs.', 'Mrs.'), ('Ms.', 'Ms.'), ('Dr.', 'Dr.')]
+MOBILE_TYPE = [(0, 'Select Mobile Type'), ('Mobile', 'Mobile'), ('Landline', 'Landline'), ('Office', 'Office')]
+EMAIL_ID_TYPE = [(0, 'Select Email Id Type'), ('Personal', 'Personal'), ('Official', 'Official'), ('Communication', 'Communication')]
+ADDRESS_TYPE = [(0, 'Select Address Type'), ('Residential', 'Residential'), ('Permanent', 'Permanent'), ('Communication', 'Communication'), ('Office', 'Office')]
 ID_ADDRESS_PROOF_TYPE = [
     ('ADHAAR CARD', 'ADHAAR CARD'),
     ('Voter ID', 'Voter ID'),
@@ -15,6 +15,8 @@ ID_ADDRESS_PROOF_TYPE = [
     ('Driving Licence', 'Driving Licence'),
     ('Passport', 'Passport')
 ]
+GENDER = [(0, 'Select Gender'), ('Male', 'Male'), ('Female', 'Female'), ('Third Gender', 'Third Gender')]
+MARITAL_STATUS = [(0, 'Select Marital Status'), ('Married', 'Married'), ('Unmarried', 'Unmarried'), ('Divorced','Divorced')]
 INDIAN_STATES = [
     ("Andhra Pradesh", "Andhra Pradesh"),
     ("Andaman and Nicobar Islands"," Andaman and Nicobar Islands"),
@@ -79,18 +81,26 @@ class RegisterForm(FlaskForm):
     def validate_email(self, email):
         employee = User.query.filter_by(email=email.data).first()
         if employee is not None:
-            raise  ValidationError('Your Email Id Already Found in System. If you have forgotten your password try to reset it.')
+            raise ValidationError('Your Email Id Already Found in System. If you have forgotten your password try to reset it.')
 
 
 class CustomerForm(FlaskForm):
+    id = StringField('Finacle Customer Id', validators=[DataRequired()])
+    uidai_no = StringField('Aadhar No:', validators=[DataRequired()])
+    pan_no = StringField('PAN No:')
+    driving_licence = StringField('Driving License')
+    voter_id = StringField('Voter ID:')
     salutation = SelectField('Salutation:', choices=SALUTATION_LIST)
     first_name = StringField('First Name:', validators=[DataRequired()])
     middle_name = StringField('Middle Name:')
     last_name = StringField('Last Name:')
     short_name = StringField('Short Name:', validators=[DataRequired()])
     dob = DateField('Date of Birth:', format='%Y-%m-%d')
+    gender = SelectField('Gender', choices=GENDER)
+    marital_status = SelectField('Marital Status', choices=MARITAL_STATUS)
     father_husband_name = StringField('Father/Spouse Name:', validators=[DataRequired()])
     mother_name = StringField('Mother Name:', validators=[DataRequired()])
+    submit = SubmitField('Add Customer')
 
 
 class ContactForm(FlaskForm):
@@ -98,6 +108,21 @@ class ContactForm(FlaskForm):
     mobile_number_type = SelectField('Salutation:', choices=MOBILE_TYPE)
     email_id = StringField('Email ID:')
     email_id_type = SelectField('Salutation:', choices=EMAIL_ID_TYPE)
+
+
+class BranchForm(FlaskForm):
+    branch_name = StringField('Branch Name', validators=[DataRequired()])
+    branch_address_line_1 = StringField('Branch Address Line1:', validators=[DataRequired()])
+    branch_address_line_2 = StringField('Branch Address Line2:', validators=[DataRequired()])
+    branch_address_line_3 = StringField('Branch Address Line3:', validators=[DataRequired()])
+    branch_address_line_4 = StringField('Branch Address Line4:', validators=[DataRequired()])
+    state = SelectField('State:', choices=INDIAN_STATES)
+    district = SelectField('District:', choices=[("Erode","Erode"), ("Tripurr","Tripurr")])
+    pin = StringField('Pincode:', validators=[DataRequired()])
+    email = StringField('Branch Email:')
+    contact_no = StringField('Branch Contact No.:')
+    submit = SubmitField('Save Branch Details!')
+
 
 
 class AddressForm(FlaskForm):
