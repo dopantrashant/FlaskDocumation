@@ -7,7 +7,7 @@
                 <form action="" method="post" class="box">
                     {{ form.hidden_tag() }}
                     <div class="field has-text-centered">
-                        Modify Branch Address
+                        Modify Branch Address for Branch Code - {{ current_user.branch.branch_code }}
                     </div>
                     <div class="field">
                         <label class="label">{{ form.branch_name.label }}</label>
@@ -25,18 +25,6 @@
                         <label class="label">{{ form.branch_address_line_2.label }}</label>
                         <div class="control">
                             {{ form.branch_address_line_2(class_='input', type='text', placeholder='Branch Address Line 2') }}
-                        </div>
-                    </div>
-                    <div class="field">
-                        <label class="label">{{ form.branch_address_line_3.label }}</label>
-                        <div class="control">
-                            {{ form.branch_address_line_3(class_='input', type='text', placeholder='Branch Address Line 3') }}
-                        </div>
-                    </div>
-                    <div class="field">
-                        <label class="label">{{ form.branch_address_line_4.label }}</label>
-                        <div class="control">
-                            {{ form.branch_address_line_4(class_='input', type='text', placeholder='Branch Address Line 4') }}
                         </div>
                     </div>
                     <div class="field">
@@ -73,13 +61,13 @@
                             {{ form.contact_no(class_='input', type='text', placeholder='Contact No of the Branch') }}
                         </div>
                     </div>
-                        <div class="control">
-                            {{ form.submit() }}
-                        </div>
+                    <div class="control">
+                        {{ form.submit() }}
                     </div>
-                </form>
             </div>
+            </form>
         </div>
+    </div>
     </div>
 
 {% endblock %}

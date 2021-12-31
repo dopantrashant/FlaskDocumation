@@ -85,9 +85,10 @@ class RegisterForm(FlaskForm):
 
 
 class CustomerForm(FlaskForm):
-    id = StringField('Finacle Customer Id', validators=[DataRequired()])
+    cbs_cif = StringField('CBS CIF ID of Customer', validators=[DataRequired()])
     uidai_no = StringField('Aadhar No:', validators=[DataRequired()])
     pan_no = StringField('PAN No:')
+    passport = StringField('Passport:')
     driving_licence = StringField('Driving License')
     voter_id = StringField('Voter ID:')
     salutation = SelectField('Salutation:', choices=SALUTATION_LIST)
@@ -114,34 +115,22 @@ class BranchForm(FlaskForm):
     branch_name = StringField('Branch Name', validators=[DataRequired()])
     branch_address_line_1 = StringField('Branch Address Line1:', validators=[DataRequired()])
     branch_address_line_2 = StringField('Branch Address Line2:', validators=[DataRequired()])
-    branch_address_line_3 = StringField('Branch Address Line3:', validators=[DataRequired()])
-    branch_address_line_4 = StringField('Branch Address Line4:', validators=[DataRequired()])
     state = SelectField('State:', choices=INDIAN_STATES)
-    district = SelectField('District:', choices=[("Erode","Erode"), ("Tripurr","Tripurr")])
+    district = SelectField('District:', choices=[('', ''), ("Erode", "Erode")])
     pin = StringField('Pincode:', validators=[DataRequired()])
     email = StringField('Branch Email:')
     contact_no = StringField('Branch Contact No.:')
     submit = SubmitField('Save Branch Details!')
 
 
-
 class AddressForm(FlaskForm):
     address_line_1 = StringField('Address Line1:', validators=[DataRequired()])
     address_line_2 = StringField('Address Line2:', validators=[DataRequired()])
-    address_line_3 = StringField('Address Line3:', validators=[DataRequired()])
-    address_line_4 = StringField('Address Line4:', validators=[DataRequired()])
     district = StringField('District:', validators=[DataRequired()])
     state = SelectField('State:', choices=INDIAN_STATES)
     pin = StringField('Pincode:', validators=[DataRequired()])
     address_type = SelectField('Address Type:', choices=ADDRESS_TYPE)
 
 
-class IdentityAddressProof(FlaskForm):
-    id_type = SelectField('ID Type', choices=ID_ADDRESS_PROOF_TYPE)
-    id_number = StringField('ID Proof Number:', validators=[DataRequired()])
-    is_valid_address_proof = BooleanField('Is Valid Address Proof')
-    is_valid_id_proof = BooleanField('Is Valid Id Proof')
-    valid_from = DateField('Valid From:', format='%Y-%m-%d')
-    valid_upto = DateField('Valid Upto:', format='%Y-%m-%d')
-    issued_place = StringField('Issued Place:', validators=[DataRequired()])
+
 
